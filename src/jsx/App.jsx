@@ -18,9 +18,12 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      current_max:0,
       data:false,
       date:0,
-      dates:0
+      date_text:'',
+      dates:0,
+      items:[]
     }
   }
   componentDidMount() {
@@ -40,22 +43,14 @@ class App extends Component {
         else {
           this.setState((state, props) => ({
             date:state.date + 1
-          }));
+          }), this.updateData);
         }
       }, 800);
     });
   }
-  componentWillUnMount() {
-    clearInterval(interval);
-  }
-  render() {
-    let countries  = [];
-    let html = [];
+  updateData() {
     let items = [];
-    let max = 0;
-    let date = [];
     _.each(this.state.data, (data, country) => {
-      let bar_style;
       if (data[this.state.dates[this.state.date]] > 0) {
         items.push({
           bar_style:{width:data[this.state.dates[this.state.date]] + '%'},
@@ -76,18 +71,29 @@ class App extends Component {
         });
       }
     });
+    
     items = _.sortBy(items, (item) => { return -item.end; }).slice(0,11);
+    
     if (items[0]) {
-      max = Math.log10(items[0].end + 1);
-      date = this.state.dates[this.state.date].split('/');
-      date = date[1] + '.' + date[0] + '.' + date[2] + '20';
+      let date = this.state.dates[this.state.date].split('/');
+      this.setState((state, props) => ({
+        current_max:Math.log10(items[0].end + 1),
+        items:items,
+        date_text:date[1] + '.' + date[0] + '.' + date[2] + '20'
+      }));
     }
+  }
+  componentWillUnMount() {
+    clearInterval(interval);
+  }
+  render() {
+    
     return (
       <div className={style.app}>
-        <h3 className={style.date}>{date}</h3>
+        <h3 className={style.date}>{this.state.date_text}</h3>
         <FlipMove typeName="ul">
-          {items.map(item => (
-            <li key={item.country} className={style.bar_container}><span className={style.bar} style={{width: + ((Math.log10(item.end + 1) / max) * 100) + '%'}}><span className={style.value}><CountUpElement start={item.start} end={item.end} /></span></span><span className={style.country_name}><img src={item.img_src} alt="" /> {item.country}</span></li>
+          {this.state.items.map(item => (
+            <li key={item.country} className={style.bar_container}><span className={style.bar} style={{width: + ((Math.log10(item.end + 1) / this.state.current_max) * 100) + '%'}}><span className={style.value}><CountUpElement start={item.start} end={item.end} /></span></span><span className={style.country_name}><img src={item.img_src} alt="" /> {item.country}</span></li>
           ))}
         </FlipMove>
       </div>
