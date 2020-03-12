@@ -4,13 +4,14 @@
 
 ## Confirmed coronavirus cases in Europe countries (EBU)
 
-This bars shows the number of confirmed cases of the novel coronavirus (COVID-19) in Europe from January 22 until March 10 included. The bar width is calculated with logarithic scale.
+The bars shows the number of confirmed cases of the novel coronavirus (COVID-19) in Europe from January 22 until March 10 included. The bar width is calculated with logarithic scale.
 
 The data has been sourced from the World Health Organisation and was compiled by the Johns Hopkins University Center for Systems Science and Engineering. See, [here](https://github.com/CSSEGISandData/COVID-19).
 
 More information about WHO situation reports can be accessed, [here](https://www.who.int/emergencies/diseases/novel-coronavirus-2019/situation-reports/).
 
 **Links**
+* [News Exchange](https://news-exchange.ebu.ch/item_detail/a34eb8c8262bb020bcd2dcfa6b48bed9/2020_21012113), 2020-03-11
 
 **Sources**
 * [THL](https://thl.fi/fi/web/infektiotaudit-ja-rokotukset/ajankohtaista/wuhanin-koronavirus)
@@ -19,6 +20,7 @@ More information about WHO situation reports can be accessed, [here](https://www
 * [JHU CCSE](https://github.com/CSSEGISandData/COVID-19)
 
 **Used by**
+
 
 ## How to use
 
