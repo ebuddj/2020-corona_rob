@@ -17,14 +17,16 @@ let interval;
 
 const regions = {
   'en': {
+    bar_bg:'#808080',
     date_reference:'Finland',
-    interval_speed:800,
-    file:'data'
+    file:'data',
+    interval_speed:800
   },
   'bg':{
+    bar_bg:'rgba(255, 82, 51, 0.9)',
     date_reference:'Плевен',
-    interval_speed:1000,
-    file:'bulgaria'
+    file:'bulgaria',
+    interval_speed:1000
   }
 }
 
@@ -115,7 +117,7 @@ class App extends Component {
           {this.state.items.map(item => (
             <li key={item.country} className={style.bar_container}>
              <span className={style.bar} style={{
-                  backgroundColor: (r === 'bg') ? 'rgba(255, 82, 51, 0.9)' : '#808080',
+                  backgroundColor: regions[r].bar_bg,
                   width: ((Math.log10(item.end + 1) / this.state.current_max) * 100) + '%'
                 }}>
                 <span className={style.value}>
