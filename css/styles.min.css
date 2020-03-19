@@ -32,17 +32,20 @@ body {
   margin: 0 0 6px 0;
   font-size: 30px;
 }
-.app___2khK2 ul li.bar_container___1WVaT .country_name___1ovzB {
+.app___2khK2 ul li.bar_container___1WVaT .country_container___1QA7i {
   color: #fff;
   font-weight: bold;
   line-height: 50px;
   position: relative;
   z-index: 1;
 }
-.app___2khK2 ul li.bar_container___1WVaT .country_name___1ovzB img {
+.app___2khK2 ul li.bar_container___1WVaT .country_container___1QA7i img {
   height: 50px;
   vertical-align: top;
   width: 75px;
+}
+.app___2khK2 ul li.bar_container___1WVaT .country_container___1QA7i .country_name___1ovzB {
+  padding-left: 5px;
 }
 .app___2khK2 ul li.bar_container___1WVaT .bar___3MM2b {
   background-color: #808080;
