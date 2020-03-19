@@ -14,6 +14,26 @@ import _ from 'underscore';
 
 let country_prev_data = {};
 let interval;
+
+const regions = {
+  'en': {
+    date_reference:'Finland',
+    interval_speed:800,
+    file:'data'
+  },
+  'bg':{
+    date_reference:'Плевен',
+    interval_speed:1000,
+    file:'bulgaria'
+  }
+}
+
+function getHashValue(key) {
+  let matches = location.hash.match(new RegExp(key+'=([^&]*)'));
+  return matches ? matches[1] : null;
+}
+const r = getHashValue('r') ? getHashValue('r') : 'en';
+
 class App extends Component {
   constructor() {
     super();
@@ -27,12 +47,12 @@ class App extends Component {
     }
   }
   componentDidMount() {
-    axios.get('./data/data.json', {
+    axios.get('./data/' + regions[r].file + '.json', {
     })
     .then((response) => {
       this.setState((state, props) => ({
         data:response.data,
-        dates:_.keys(response.data['Finland']).filter((value, index, arr) => {
+        dates:_.keys(response.data[regions[r].date_reference]).filter((value, index, arr) => {
           return !(value === 'Country' || value === 'Continent' || value === 'Province/State' || value === 'Lat' || value === 'Long');
         })
       }));
@@ -45,7 +65,7 @@ class App extends Component {
             date:state.date + 1
           }), this.updateData);
         }
-      }, 800);
+      }, regions[r].interval_speed);
     });
   }
   updateData() {
@@ -71,7 +91,6 @@ class App extends Component {
         });
       }
     });
-    
     items = _.sortBy(items, (item) => { return -item.end; }).slice(0,11);
     
     if (items[0]) {
@@ -87,13 +106,22 @@ class App extends Component {
     clearInterval(interval);
   }
   render() {
-    
     return (
       <div className={style.app}>
         <h3 className={style.date}>{this.state.date_text}</h3>
         <FlipMove typeName="ul">
           {this.state.items.map(item => (
-            <li key={item.country} className={style.bar_container}><span className={style.bar} style={{width: + ((Math.log10(item.end + 1) / this.state.current_max) * 100) + '%'}}><span className={style.value}><CountUpElement start={item.start} end={item.end} /></span></span><span className={style.country_name}><img src={item.img_src} alt="" /> {item.country}</span></li>
+            <li key={item.country} className={style.bar_container}>
+              <span className={style.bar} style={{width: + ((Math.log10(item.end + 1) / this.state.current_max) * 100) + '%'}}>
+                <span className={style.value}>
+                  <CountUpElement start={item.start} end={item.end} />
+                </span>
+              </span>
+              <span className={style.country_container}>
+                {(r === 'en') ? <img src={item.img_src} alt="" /> : ''}
+                <span className={style.country_name}>{item.country}</span>
+              </span>
+            </li>
           ))}
         </FlipMove>
       </div>

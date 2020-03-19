@@ -24,6 +24,7 @@ More information about WHO situation reports can be accessed, [here](https://www
 
 **Used by**
 * RTP/Portugal on RTPI
+* PTV/Armenia on 1TV
 
 ## How to use
 
