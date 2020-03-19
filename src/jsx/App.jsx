@@ -106,6 +106,7 @@ class App extends Component {
     clearInterval(interval);
   }
   render() {
+    let bar_style;
     return (
       <div className={style.app}>
         {(r === 'bg') ? <h3>Развитие на заразата у нас по градове</h3> : ''}
@@ -113,7 +114,10 @@ class App extends Component {
         <FlipMove typeName="ul">
           {this.state.items.map(item => (
             <li key={item.country} className={style.bar_container}>
-              <span className={style.bar} style={{width: + ((Math.log10(item.end + 1) / this.state.current_max) * 100) + '%'}}>
+             <span className={style.bar} style={{
+                  backgroundColor: (r === 'bg') ? 'rgba(255, 82, 51, 0.9)' : '#808080',
+                  width: ((Math.log10(item.end + 1) / this.state.current_max) * 100) + '%'
+                }}>
                 <span className={style.value}>
                   <CountUpElement start={item.start} end={item.end} />
                 </span>
