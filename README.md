@@ -8,6 +8,8 @@ The bars shows the number of confirmed cases of the novel coronavirus (COVID-19)
 
 The data has been sourced from the World Health Organisation and was compiled by the Johns Hopkins University Center for Systems Science and Engineering. See, [here](https://github.com/CSSEGISandData/COVID-19).
 
+**Bulgarian version:** https://ebuddj.github.io/2020-corona_rob/#r=bg
+
 More information about WHO situation reports can be accessed, [here](https://www.who.int/emergencies/diseases/novel-coronavirus-2019/situation-reports/).
 
 **Links**

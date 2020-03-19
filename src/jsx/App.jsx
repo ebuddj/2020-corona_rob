@@ -108,6 +108,7 @@ class App extends Component {
   render() {
     return (
       <div className={style.app}>
+        {(r === 'bg') ? <h3>Развитие на заразата у нас по градове</h3> : ''}
         <h3 className={style.date}>{this.state.date_text}</h3>
         <FlipMove typeName="ul">
           {this.state.items.map(item => (
