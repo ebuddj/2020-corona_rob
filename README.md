@@ -25,8 +25,11 @@ More information about WHO situation reports can be accessed, [here](https://www
 * [JHU CCSE](https://github.com/CSSEGISandData/COVID-19)
 
 **Used by**
-* RTP/Portugal on RTPI
+* [BNT/Bulgaria on Facebook](https://www.facebook.com/watch/?v=248949389573923)
+* [BNT/Bulgaria on Online](https://news.bnt.bg/news/razprostranenie-na-covid-19-u-nas-8-20-mart-2020-1044679news.html)
+* BNT/Bulgaria on BNT1
 * PTV/Armenia on 1TV
+* RTP/Portugal on RTPI
 
 ## How to use
 
