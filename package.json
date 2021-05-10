@@ -34,6 +34,6 @@
     "axios": "^0.21.1",
     "react-countup": "^4.3.3",
     "react-flip-move": "^3.0.4",
-    "underscore": "^1.10.2"
+    "underscore": "^1.12.1"
   }
 }
